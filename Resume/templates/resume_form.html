@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Resume Generator</title>
+</head>
+<body>
+    <h1>Online Resume Generator</h1>
+    <form action="/generate" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="summary">Summary:</label><br>
+        <textarea id="summary" name="summary" required></textarea><br><br>
+
+        <h3>Experience</h3>
+        <div id="experience">
+            <div class="exp-entry">
+                <label for="exp_title_1">Job Title:</label>
+                <input type="text" id="exp_title_1" name="exp_title_1"><br>
+                <label for="exp_company_1">Company:</label>
+                <input type="text" id="exp_company_1" name="exp_company_1"><br>
+                <label for="exp_year_1">Year:</label>
+                <input type="text" id="exp_year_1" name="exp_year_1"><br>
+                <label for="exp_description_1">Description:</label><br>
+                <textarea id="exp_description_1" name="exp_description_1"></textarea><br>
+            </div>
+        </div>
+        <button type="button" id="add_exp">Add Experience</button><br><br>
+
+        <h3>Education</h3>
+        <div id="education">
+            <div class="edu-entry">
+                <label for="edu_degree_1">Degree:</label>
+                <input type="text" id="edu_degree_1" name="edu_degree_1"><br>
+                <label for="edu_university_1">University:</label>
+                <input type="text" id="edu_university_1" name="edu_university_1"><br>
+                <label for="edu_year_1">Year:</label>
+                <input type="text" id="edu_year_1" name="edu_year_1"><br>
+            </div>
+        </div>
+        <button type="button" id="add_edu">Add Education</button><br><br>
+
+        <input type="submit" value="Generate Resume">
+    </form>
+
+    <script>
+        let expCount = 1;
+        let eduCount = 1;
+
+        document.getElementById('add_exp').addEventListener('click', function() {
+            expCount++;
+            let expDiv = document.createElement('div');
+            expDiv.classList.add('exp-entry');
+
+            expDiv.innerHTML = `
+                <label for="exp_title_${expCount}">Job Title:</label>
+                <input type="text" id="exp_title_${expCount}" name="exp_title_${expCount}"><br>
+                <label for="exp_company_${expCount}">Company:</label>
+                <input type="text" id="exp_company_${expCount}" name="exp_company_${expCount}"><br>
+                <label for="exp_year_${expCount}">Year:</label>
+                <input type="text" id="exp_year_${expCount}" name="exp_year_${expCount}"><br>
+                <label for="exp_description_${expCount}">Description:</label><br>
+                <textarea id="exp_description_${expCount}" name="exp_description_${expCount}"></textarea><br>
+            `;
+
+            document.getElementById('experience').appendChild(expDiv);
+        });
+
+        document.getElementById('add_edu').addEventListener('click', function() {
+            eduCount++;
+            let eduDiv = document.createElement('div');
+            eduDiv.classList.add('edu-entry');
+
+            eduDiv.innerHTML = `
+                <label for="edu_degree_${eduCount}">Degree:</label>
+                <input type="text" id="edu_degree_${eduCount}" name="edu_degree_${eduCount}"><br>
+                <label for="edu_university_${eduCount}">University:</label>
+                <input type="text" id="edu_university_${eduCount}" name="edu_university_${eduCount}"><br>
+                <label for="edu_year_${eduCount}">Year:</label>
+                <input type="text" id="edu_year_${eduCount}" name="edu_year_${eduCount}"><br>
+            `;
+
+            document.getElementById('education').appendChild(eduDiv);
+        });
+    </script>
+</body>
+</html>
